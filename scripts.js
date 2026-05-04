@@ -51,6 +51,12 @@ const chapters = {
     zoom: 18,
     pitch: 50,
     bearing: 0
+  },
+  'ironhorse-trail': {
+    center: [-122.0012255, 37.8209442],
+    zoom: 18,
+    pitch: 50,
+    bearing: 0
   }
   // more chapters to come...
 };
