@@ -9,8 +9,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Map container for Mapbox GL JS. The map is positioned behind the story panel. -->
   <div id="map"></div>
+
+  <!-- Story panel with cards for each trail location and the intro overview. -->
   <div id="story">
+    <!-- Intro card: provides context for Trail-Oriented Development and invites users to explore the story cards. -->
     <div class="chapter intro" data-location="intro">
       <h2>Trail-Oriented Development in the Bay Area</h2>
       <p>Trail-oriented development (TrOD) is a planning framework that uses off-street trails and greenways as anchors for compact, context-sensitive development. It connects people to key destinations through walkable, human-scaled design tailored to local conditions and priorities. 
@@ -20,27 +24,37 @@
         <strong>Click on each card to learn more about Trail-Oriented Development (TrOD) at key locations.</strong>
       </div>
     </div>
+
+    <!-- Chapter card: Marina Bay Trail. Clicking jumps the map to the specified location. -->
     <div class="chapter" data-location="marina-bay">
       <img class="chapter-photo" src="images/marina-bay-trail.jpeg" alt="Marina Bay development">
       <h2>Marina Bay Trail</h2>
       <p> The Marina Bay neighborhood in Richmond offers direct connections from homes to the SF Bay Trail.</p>
     </div>
+
+    <!-- Chapter card: Ohlone Greenway. Clicking updates the map view to this trail corridor. -->
     <div class="chapter" data-location="Ohlone-greenway">
       <img class="chapter-photo" src="images/ohlone-greenway.jpeg" alt="Ohlone Greenway trail">
       <h2>Ohlone Greenway</h2>
       <p>The Ohlone Greenway is a 4.5-mile pedestrian and bicycle path in the East Bay. In the City of El Cerrito, the Ohlone Greenway runs underneath the elevated Bay Area Rapid Transit (BART) tracks from the south to north City limits, providing critical first-last mile connectivity for residents. The Ohlone Greenway functions as a vibrant corridor that connects communities to recreation and transportation. </p>
     </div>
+
+    <!-- Chapter card: Emeryville Greenway. Uses the same clickable behavior for map navigation. -->
     <div class="chapter" data-location="emeryville-greenway">
       <img class="chapter-photo" src="images/emeryville-greenway.JPG" alt="San Pablo Avenue development">
       <h2>Emeryville Greenway</h2>
       <p>The Emeryville Greenway is a a 1.9-mile pedestrian and bicycle path that runs through through Emeryville from Berkeley to Oakland. This greenway connects people to employment, residences, shopping, regional transit, and the Bay Trail.</p>
     </div>
+
+    <!-- Chapter card: Iron Horse Trail. The map script matches this card by data-location. -->
     <div class="chapter" data-location="ironhorse-trail">
       <img class="chapter-photo" src="images/ironhorse-trail.jpeg" alt="Iron Horse Trail">
       <h2>Iron Horse Trail</h2>
       <p>Running north/south though the San Francisco Bay Area region, the Iron Horse Trail is a 32-mile pedestrian and bycicle route used for both recreation and commuting, connecting kids to schools, commuters to business centers, and residents to parks and other amenities. It connects nine cities and several Bay Area Rapid Transit (BART) stations, making it easily accessible without a car.</p>
     </div>
   </div>
+
+  <!-- Load the trail GeoJSON data before the main script that initializes the map. -->
   <script src="trail-data.js"></script>
   <script src="scripts.js"></script>
 </body>

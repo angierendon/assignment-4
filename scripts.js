@@ -1,5 +1,7 @@
+// Set the Mapbox access token so the map can authenticate with Mapbox services.
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5naWUxMjM1MyIsImEiOiJjbWF2aHJnOHQwNGx1MmpwdnMyaXVnZHN0In0.odV43jezFdD0s7CW9uaJXQ';
 
+// Create the map instance and configure the initial view.
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-v9',
@@ -8,14 +10,14 @@ const map = new mapboxgl.Map({
     pitch: 25
 });
 
-console.log(trailData); // Log the trailData to verify it's loaded correctly
+// Verify the trail data loaded correctly from trail-data.js.
+console.log(trailData);
 
-
-// wait for map to load before adding data
+// Wait for the Mapbox map to finish loading before adding the trail source and layer.
 map.on('load', () => {
     map.addSource('trails', {
         type: 'geojson',
-        data: trailData // references trail-data.js variable
+        data: trailData // this is the GeoJSON data loaded from trail-data.js
     });
     
     map.addLayer({
@@ -33,6 +35,7 @@ map.on('load', () => {
     });
 });
 
+// Define camera views for each story chapter keyed by the data-location value.
 const chapters = {
   'marina-bay': {
     center: [-122.344841, 37.908118],
@@ -61,6 +64,7 @@ const chapters = {
   // more chapters to come...
 };
 
+// Smoothly move the map to the selected chapter's camera position.
 function flyToChapter(locationKey) {
   const chapter = chapters[locationKey];
   if (!chapter) return;
@@ -76,9 +80,12 @@ function flyToChapter(locationKey) {
   });
 }
 
+// Add click handlers to each story card that corresponds to a chapter.
 const chapterCards = document.querySelectorAll('.chapter');
 chapterCards.forEach((card) => {
   const locationKey = card.dataset.location;
+
+  // Only attach interaction for cards that have a matching chapter defined.
   if (!chapters[locationKey]) return;
 
   card.style.cursor = 'pointer';
@@ -87,6 +94,7 @@ chapterCards.forEach((card) => {
   });
 });
 
+// Add a scroll listener to the story panel so non-intro cards fade in after scrolling.
 const storyPanel = document.getElementById('story');
 if (storyPanel) {
   storyPanel.addEventListener('scroll', () => {
@@ -95,4 +103,6 @@ if (storyPanel) {
     }
   }, { passive: true });
 }
+
+
 
